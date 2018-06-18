@@ -6,7 +6,7 @@ some useful tooling for dealing w/ slot
 I find it very frustrating that we can't iterate on children from templating. For sure, we can do a lot with `v-for` or the `render(h)` function, but there are some common usecases in between which won't fit directives and where `render()` is overkill.
 
 ## how
-I tried to build separate directives for each functionality (to encourage modularity) but directives cannot be used on `<slot />` and/or functional components, so the initial goal to write `<slot v-limit="5" />` was loss from the beginning ; also, there is no way to keep order within directive treatment which could result in a complicated use...
+I tried to build separate directives for each functionality (to encourage modularity) but directives cannot be used on `<slot />` and/or functional components, so the initial goal to write `<slot v-limit="5" />` was loss from the beginning ; also, there is no way to keep order within directive treatment which could result in a complicated use…
 
 Instead, I'm proposing a functional component along with [vue-fragments](https://github.com/y-nk/vue-fragments) for a most-transparent DOM-wise implementation, at the cost of a slightly verbose use (basically `<b-slot><slot /></b-slot>`).
 
