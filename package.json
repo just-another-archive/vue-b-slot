@@ -1,0 +1,42 @@
+{
+  "name": "vue-b-slot",
+  "version": "1.0.0",
+  "description": "better slot tools for vuejs",
+  "main": "dist/vue-b-slot.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node ./rollup.build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/y-nk/vue-b-slot.git"
+  },
+  "keywords": [
+    "better",
+    "slot",
+    "tools",
+    "vue",
+    "vuejs"
+  ],
+  "author": "Julien Barbay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/y-nk/vue-b-slot/issues"
+  },
+  "peerDependencies": {
+    "vue": "^2.5.16"
+  },
+  "files": [
+    "*.md",
+    "**/*.js"
+  ],
+  "homepage": "https://github.com/y-nk/vue-b-slot#readme",
+  "dependencies": {
+    "vue-fragments": "^1.2.0"
+  },
+  "devDependencies": {
+    "rollup": "^0.60.7",
+    "rollup-plugin-minify-es": "^1.1.1",
+    "rollup-plugin-node-resolve": "^3.3.0"
+  }
+}
