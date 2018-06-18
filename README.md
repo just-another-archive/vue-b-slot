@@ -14,12 +14,13 @@ My only wish is that we could automatically bind the `<slot />` of a component t
 
 ## use
 - download the package `npm i -s vue-b-slot`
+- install dependencies `npm i`
 - And there you go :
 
   ```
   import BSlot from 'vue-b-slot'
 
-  export const MyTop5s {
+  export const MyTop5s = {
     components: { BSlot },
     template: '<ol>
       <b-slot :limit="5" :wrap="li"><slot /></b-slot>
