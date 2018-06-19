@@ -1,8 +1,7 @@
 const rollup  = require('rollup'),
-      resolve = require('rollup-plugin-node-resolve'),
       minify  = require('rollup-plugin-minify-es')
 
-const i = { input: './src/index.js', plugins: [resolve(), minify()] },
+const i = { input: './src/index.js', plugins: [minify()] },
       o = { file: './dist/vue-b-slot.min.js',
             format: 'umd',
             name: 'BSlot'
