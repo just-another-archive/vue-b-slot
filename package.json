@@ -1,6 +1,6 @@
 {
   "name": "vue-b-slot",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "better slot tools for vuejs",
   "main": "dist/vue-b-slot.min.js",
   "scripts": {
@@ -32,7 +32,7 @@
   ],
   "homepage": "https://github.com/y-nk/vue-b-slot#readme",
   "dependencies": {
-    "vue-fragments": "^1.2.0"
+    "vue-fragments": "^2.0.1"
   },
   "devDependencies": {
     "rollup": "^0.60.7",
