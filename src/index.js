@@ -4,6 +4,11 @@ export default {
   functional: true,
 
   props: {
+    offset: {
+      type: Number,
+      default: 0,
+    },
+
     foreach: {
       type: Function,
       default: null,
@@ -36,6 +41,12 @@ export default {
 
     // trim text nodes
     _children = _children.filter(child => !!child.tag)
+
+    // slide index and loop array
+    _children = [].concat(
+      _children.slice(props.offset),
+      _children.slice(0, props.offset)
+    )
 
     // add props if there is none
     _children.forEach(child => { child.data = child.data || { attrs: {} } })
