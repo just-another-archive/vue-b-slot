@@ -9,11 +9,6 @@ export default {
       default: 0,
     },
 
-    each: {
-      type: Function,
-      default: null,
-    },
-
     type: {
       type: String,
       default: null,
@@ -28,6 +23,11 @@ export default {
       type: Number,
       default: 0,
       validator(val) { return val >= 0 }
+    },
+
+    each: {
+      type: Function,
+      default: null,
     },
 
     wrap: {
@@ -56,10 +56,6 @@ export default {
     // add props if there is none
     _children.forEach(child => { child.data = child.data || { attrs: {} } })
 
-    // foreach by custom function
-    if (props.each)
-      _children.forEach((child, i) => props.each(child, i))
-
     // filter by type
     if (props.type)
       _children = _children.filter(child => child.tag.indexOf(props.type) !== -1)
@@ -72,7 +68,11 @@ export default {
     if (props.limit > 0)
       _children = _children.slice(0, props.limit)
 
-    // decorate
+    // foreach by custom function
+    if (props.each)
+      _children.forEach((child, i) => props.each(child, i))
+
+      // decorate
     if (props.wrap) {
       if (props.wrap instanceof Function)
         _children = _children.map((child, i) => props.wrap(h, child, i))
