@@ -9,7 +9,7 @@ export default {
       default: 0,
     },
 
-    foreach: {
+    each: {
       type: Function,
       default: null,
     },
@@ -26,16 +26,21 @@ export default {
 
     limit: {
       type: Number,
-      default: 0,    
+      default: 0,
       validator(val) { return val >= 0 }
     },
 
     wrap: {
-      type: String,
+      type: [String, Function],
+      default: null,
+    },
+
+    prerender: {
+      type: Function,
       default: null,
     },
   },
-  
+
   render(h, { props, children }) {
     let _children = children.concat();
 
@@ -52,13 +57,13 @@ export default {
     _children.forEach(child => { child.data = child.data || { attrs: {} } })
 
     // foreach by custom function
-    if (props.foreach)
-      _children.forEach((child, i) => props.foreach(child, i))
-    
+    if (props.each)
+      _children.forEach((child, i) => props.each(child, i))
+
     // filter by type
     if (props.type)
       _children = _children.filter(child => child.tag.indexOf(props.type) !== -1)
-    
+
     // filter by custom function
     if (props.filter)
       _children = _children.filter((child, i) => props.filter(child, i))
@@ -66,11 +71,18 @@ export default {
     // limit output
     if (props.limit > 0)
       _children = _children.slice(0, props.limit)
-  
-    // decorate
-    if (props.wrap)
-      _children = _children.map(child => h(props.wrap, null, [child]))
 
+    // decorate
+    if (props.wrap) {
+      if (props.wrap instanceof Function)
+        _children = _children.map((child, i) => props.wrap(h, child, i))
+      else
+        _children = _children.map(child => h(props.wrap, null, [child]))
+    }
+
+    // prerender hook
+    if (props.prerender)
+      props.prerender()
 
     return h(VFragments.component, null, _children)
   }

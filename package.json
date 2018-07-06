@@ -1,6 +1,6 @@
 {
   "name": "vue-b-slot",
-  "version": "1.0.6",
+  "version": "1.0.8",
   "description": "better slot tools for vuejs",
   "main": "dist/vue-b-slot.min.js",
   "scripts": {
