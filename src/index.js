@@ -54,7 +54,9 @@ export default {
     )
 
     // add props if there is none
-    _children.forEach(child => { child.data = child.data || { attrs: {} } })
+    _children
+        .filter(child => !child.data)
+        .forEach(child => child.data = { attrs: {} })
 
     // filter by type
     if (props.type)
