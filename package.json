@@ -32,7 +32,7 @@
   ],
   "homepage": "https://github.com/y-nk/vue-b-slot#readme",
   "dependencies": {
-    "vue-fragments": "^2.1.0"
+    "vue-fragment": "^1.1.0"
   },
   "devDependencies": {
     "rollup": "^0.60.7",

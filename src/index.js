@@ -1,4 +1,4 @@
-import VFragments from 'vue-fragments'
+import { Fragment } from 'vue-fragment'
 
 export default {
   functional: true,
@@ -86,6 +86,6 @@ export default {
     if (props.prerender)
       props.prerender()
 
-    return h(VFragments.component, null, _children)
+    return h(Fragment, null, _children)
   }
 }
