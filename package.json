@@ -1,11 +1,14 @@
 {
   "name": "vue-b-slot",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "better slot tools for vuejs",
   "main": "dist/vue-b-slot.min.js",
+  "module": "dist/vue-b-slot.esm.js",
+  "global": "BSlot",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node ./rollup.build.js"
+    "build": "node ./rollup.build.js",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -35,8 +38,11 @@
     "vue-fragment": "^1.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
     "rollup": "^0.60.7",
+    "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-minify-es": "^1.1.1",
-    "rollup-plugin-node-resolve": "^3.3.0"
+    "rollup-plugin-node-resolve": "^3.4.0"
   }
 }

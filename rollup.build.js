@@ -1,17 +1,37 @@
-const rollup  = require('rollup'),
-      minify  = require('rollup-plugin-minify-es')
+const config = require('./package.json');
 
-const i = { input: './src/index.js', plugins: [minify()] },
-      o = { file: './dist/vue-b-slot.min.js',
-            format: 'umd',
-            name: 'BSlot'
-          }
+const rollup  = require('rollup'),
+      minify  = require('rollup-plugin-minify-es'),
+      babel   = require('rollup-plugin-babel'),
+      resolve = require('rollup-plugin-node-resolve')
+
+const source = {
+  input: './src/index.js',
+  plugins: [
+    resolve(),
+    babel({ exclude: 'node_modules/**' }),
+    minify()
+  ]
+}
+
+const umd = {
+  file: config.main,
+  format: 'umd',
+  name: config.global,
+}
+
+const esm = {
+  file: config.module,
+  format: 'esm',
+}
 
 async function build() {
-  const bundle = await rollup.rollup(i)
-  const { code, map } = await bundle.generate(o)
+  const bundle = await rollup.rollup(source)
 
-  await bundle.write(o)
+  ;[umd].forEach(build => {
+    bundle.generate(build)
+    bundle.write(build)
+  })
 }
 
 build()
